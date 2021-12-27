@@ -1,0 +1,16 @@
+package com.woo.blog.test;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class cortest {
+	
+	//http://localhost:8080/test/hello
+	@GetMapping("/test/hello")
+	public String hello() {
+		
+		return "<h1>안녕</h1>";
+	}
+}
