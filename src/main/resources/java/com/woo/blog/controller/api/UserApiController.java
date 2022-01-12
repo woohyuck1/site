@@ -1,5 +1,6 @@
 package com.woo.blog.controller.api;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
@@ -7,15 +8,20 @@ import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties.Credential;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.woo.blog.config.auth.PrincipalDetail;
@@ -41,11 +47,20 @@ public class UserApiController {
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		// 실제로 db에 insert를 하고 아래에서 return이 됨
-
 		userService.membership(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+	
+	@DeleteMapping("/user/delete")
+	public ResponseDto<Integer> delete(@RequestBody User user){
 
+		userService.meberdel(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+		
+	}
+ 
+    
+	//회원 수정
 	@PutMapping("/user")
 	public ResponseDto<Integer> update(@RequestBody User user) {
 		userService.memberfix(user);
@@ -57,14 +72,4 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 }
-/*
- * //정통적인 로그인방식 시큐리티 사용안함
- * 
- * @PostMapping("/api/user/login") public ResponseDto<Integer>
- * login(@RequestBody User user,HttpSession session) {
- * System.out.println("UserApi컨트롤러 로그인호출됨"); User principal =
- * userService.로그인(user);
- * 
- * if(principal != null) { session.setAttribute("principal", principal); }
- * return new ResponseDto<Integer>(HttpStatus.OK.value(),1); }
- */
+

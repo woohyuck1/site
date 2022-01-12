@@ -56,7 +56,7 @@ public class PrincipalDetail implements UserDetails{
 		return true;
 	}
 	
-	//계정이 갖고있는 권한 목록을 리턴한다.(권한이 여러개 있을수있어서 루프를 돌아야하는데 우리는하나만)
+	//계정이 갖고있는 권한 목록을 리턴한다.(권한이 여러개 있을수있어서 루프를 돌아야하는데 나는하나만)
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 	

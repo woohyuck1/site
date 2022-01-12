@@ -21,7 +21,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	<nav class="navbar navbar-expand-md bg-light navbar-black ">
 		<a class="navbar-brand" href="/">안녕안녕</a>
 		<a class= "navbar-brand" href= "/boardWrite">야호</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

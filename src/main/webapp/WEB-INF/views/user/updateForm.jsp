@@ -12,7 +12,7 @@
 		
 		<div class="form-group">
 			<label for="password">Password:</label> 
-			<input type="password"  value ="${principal.user.password}" class="form-control" placeholder="Enter password" id="password">
+			<input type="password"   class="form-control" placeholder="Enter password" id="password">
 		</div>
 		
 		<div class="form-group">
@@ -24,6 +24,8 @@
 	
 	</form>
 		<button id = "btn-update" class="btn btn-primary">수정</button>
+		<button id = "btn-delete" class="btn btn-primary">삭제</button>
+		
 </div>
 
 <script src="/js/user.js"></script>

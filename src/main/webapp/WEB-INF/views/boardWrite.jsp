@@ -23,9 +23,9 @@
 </head>
 <body>
 <div class="container">
-	<h2>다중파일 업로드</h2>
+	<h2>업로드</h2>
 	<div class="panel panel-default">
-	<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
+	<div class="panel-heading">업로드</div>
 	<div class="panel-body">
 		<form class="form-horizontal" action="<c:url value='/upload.do'/>" enctype="multipart/form-data" method="post">
 			<div class="form-group">

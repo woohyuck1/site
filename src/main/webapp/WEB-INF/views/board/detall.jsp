@@ -8,18 +8,19 @@
 	</c:if>
 	<br /> <br />
 	<div>
-		글 번호 : <span id="id"><i>${board.id} </i></span> 작성자 : <span><i>${board.user.username} </i></span> <br />
+		글 번호 : <span id="id"><i>${board.id} </i></span> 작성자 : <span><i>${board.user.username} </i></span> <span><i>등록일 : ${board.createDate} </i></span>  <br />
 	</div>
 	<div>
-		<label for="title">:(</label>
+		<label for="title">제목</label>
 		<h3>${board.title}</h3>
 	</div>
 	<div>
-		<label for="content">:)</label>
+		<label for="content">글</label>
 		<div>${board.content}</div>
 	</div>
 	<div class="card">
 	<form>
+	<input type = "hidden" id = "createDate" value = "${board.createDate}" />
 	<input type = "hidden" id = "userId" value="${principal.user.id}"/>
 	<input type = "hidden" id = "boardId" value="${board.id}"/>
 		<div class="card-body">

@@ -4,15 +4,21 @@ import java.net.SocketPermission;
 import java.net.http.HttpHeaders;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.tomcat.jni.User;
 import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,6 +28,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.woo.blog.config.auth.PrincipalDetail;
 import com.woo.blog.model.KakaoProfile;
 import com.woo.blog.model.OAuthToken;
+import com.woo.blog.service.UserService;
 
 //인증이 안된사용자들이 출입할수있는경로 /auth
 //그냥주소가 /면 index.jsp 허용
@@ -35,7 +42,6 @@ public class UserController {
 		return "/boardWrite";
 	}
 	
-	
 	@GetMapping("/auth/joinForm")
 	public String joinForm() {
 		return "user/joinForm";
@@ -45,7 +51,12 @@ public class UserController {
 	public String loginForm() {
 		return "user/loginForm";
 	}
-
+	
+	@GetMapping("/user/delete")
+	public String delete() {
+		return "user/delete";
+	}
+	
 	@SuppressWarnings("unused")
 	@GetMapping("/auth/kakao/callback")
 	public String kakaoCallback(String code) { // 데이터리턴해주는 컨트롤러함수

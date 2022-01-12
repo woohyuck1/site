@@ -42,20 +42,20 @@ public class BoardApiController {
 	@PostMapping("/api/board")
 	public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principal)  {
 		
-		
 		boardService.write(board, principal.getUser());
-
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> deleteById(@PathVariable int id) {
+		
 		boardService.textdel(id);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 
 	@PutMapping("/api/board/{id}")
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board) {
+		
 		boardService.textfix(id, board);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 
@@ -70,6 +70,7 @@ public class BoardApiController {
 
 	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
 	public ResponseDto<Integer> replyDelete(@PathVariable int replyId) {
+		
 		boardService.replydel(replyId);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}

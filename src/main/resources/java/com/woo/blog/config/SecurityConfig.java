@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable() //csrf 토큰 비활성화 (테스트시걸어두는게좋음)
+			.csrf().disable() //csrf 토큰 비활성화
 			.authorizeRequests()	//어떤리퀘스트이들어오면
 				.antMatchers("/","/auth/**","/js/**","/css/**","/image/**","/dummy/**") //auth 로들어가
 				.permitAll()	

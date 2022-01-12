@@ -37,8 +37,8 @@ let index = {
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
-
 	},
+	
 	deleteById: function() {
 		let id = $("#id").text();
 
@@ -75,8 +75,8 @@ let index = {
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});
-
 	},
+	
 	replySave: function() {
 		$
 		let data = {

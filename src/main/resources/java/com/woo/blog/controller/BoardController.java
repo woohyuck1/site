@@ -48,7 +48,7 @@ public class BoardController {
 	}
 	
 	
-	//user권한이필요c
+	//user권한이필요
 	@GetMapping("/board/saveForm")
 	public String saveForm() {
 		return "board/saveForm";

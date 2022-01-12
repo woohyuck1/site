@@ -46,7 +46,7 @@ public class FileController {
 			
 			map.put(name, value);
 		}
-		
+	  
 		// 2. 파일 담고있는 파라미터 읽어오기
 		Iterator<String> it = multipartRequest.getFileNames();
 		List<String> fileList = new ArrayList<String>();

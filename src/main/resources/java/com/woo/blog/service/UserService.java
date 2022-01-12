@@ -2,6 +2,8 @@ package com.woo.blog.service;
 
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,16 +30,21 @@ public class UserService {
 	
 	
 	@Transactional //회원가입전체가 트랜잭션으로 묶임
-	public int membership(User user) {
-			String rawPassword = user.getPassword(); //원문
+	public void membership(User user) {
+		 Optional<User> check = userRepository.findById(user.getId());
+	        check.ifPresent(u -> {
+	            throw new IllegalStateException("이미 존재하는 회원입니다.");
+
+	        });
+	        
+	        String rawPassword = user.getPassword(); //원문
 			String encPassword = encoder.encode(rawPassword);//해쉬
 			user.setPassword(encPassword);
 			user.setRole(RoleType.USER);
 			userRepository.save(user);
-		return 1;
-		
-		
 	}
+	
+
 	
 	@Transactional
 	public void memberfix(User user) {
@@ -56,7 +63,10 @@ public class UserService {
 		//회원수정 함수 종료시 = 서비스 종료  ,트랜잭션 종료 = commit 이 자동으로 된다.
 		//영속화된 persistance 객체의 변화가 감지되면 더티체킹이 되어 update문을 자동으로 날림
 	}
-	
+	@Transactional
+	public void meberdel(User user) {
+		userRepository.deleteById(user.getId());
+	}
 	
 }
 

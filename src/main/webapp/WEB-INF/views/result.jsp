@@ -19,9 +19,9 @@
 </head>
 <body>
 	<div class="container">
-	<h2>업로드가 완료 되었습니다.</h2>
+	<h2>ㅇㅎ</h2>
 	<div class="panel panel-default">
-		<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
+		<div class="panel-heading">테스트</div>
 		<div class="panel-body">
 			<table class="table table-bordered table-hover">
 				<tr>
